@@ -43,6 +43,7 @@ func readTrailsDataFromCSV(fileName string) (Trails, error) {
 
 	defer file.Close()
 	reader := csv.NewReader(file)
+	//this is fine for now but for large file , we can use normal read to each record
 	rows, err := reader.ReadAll()
 	if err != nil {
 		fmt.Println("Error reading file:", err)
@@ -50,11 +51,12 @@ func readTrailsDataFromCSV(fileName string) (Trails, error) {
 	}
 
 	var trails Trails
+	//not required but maintaining it for readability purpose, instead of using the index value directly
 	headerMap := make(map[string]int)
 	for index, col := range rows[0] {
 		headerMap[col] = index
 	}
-
+	//Proper error checking needed here, skipping here for now since the columns scope is restricted to the provided CSV file
 	for _, row := range rows[1:] {
 		trail := Trail{
 			AccessName:     strings.TrimSpace(row[headerMap["AccessName"]]),

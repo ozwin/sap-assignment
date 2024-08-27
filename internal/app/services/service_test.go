@@ -16,6 +16,7 @@ func TestTrailService_GetAll(t *testing.T) {
 		want models.Trails
 	}{
 		// TODO: Add test cases.
+		//Not part of the scope
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -27,19 +28,22 @@ func TestTrailService_GetAll(t *testing.T) {
 }
 
 func TestTrailService_FilterTrails(t *testing.T) {
-
+	//creating sample data for tests
 	fileName := "sample_data"
 	createSampledataFile(t, fileName)
 	defer deleteSampleDataFile(t, fileName)
 
+	//initalizing service instance
 	trails, _ := models.NewTrailsStore(fileName)
 	ts := NewTrailService(trails)
 
 	//filters
-	//only bike trails
+	//case 1: No filters
+	//case 2: only bike trails case
 	bikeTrailFilter := make(map[FilterField]interface{})
 	bikeTrailFilter[HasBikeTrail] = true
-	//multiple filter scenarios
+
+	//case 2: multiple filter scenarios
 	mutlipleFilters := make(map[FilterField]interface{})
 	mutlipleFilters[HasHikingTrail] = true
 	mutlipleFilters[HasPicnic] = true
