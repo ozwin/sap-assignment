@@ -1,3 +1,3 @@
 package config
 
-const TrailsFileName = "BoulderTrailHeads.csv"
+const TrailsFileName = "../data/BoulderTrailHeads.csv"
