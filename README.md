@@ -16,7 +16,7 @@ To run this application
 
 Clone the repo
 
-> go get https://github.com/ozwin/sap-assignment.git
+> git clone https://github.com/ozwin/sap-assignment.git
 
 Run the following from the root folder of the project
 > cd ./internal/cmd
